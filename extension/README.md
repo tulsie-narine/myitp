@@ -1,6 +1,10 @@
 # My IT Process to LMX
 
-Current extension version: `1.0.4`.
+Current extension version: `1.0.71`.
+
+For the complete workflow, current feature list, installation instructions,
+project structure, mappings, and limitations, see the project-level
+[`README.md`](../README.md).
 
 A migration utility for Chromium-based browsers that migrates My IT Process
 Alignment reviews into Lifecycle Manager X (LMX) assessments.

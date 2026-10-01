@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>My IT Process to LMX — Migration</title>
+  <link rel="stylesheet" href="src/popup.css" />
+  <link rel="stylesheet" href="migration.css" />
+</head>
+<body>
+  <div class="app migration-page">
+    <header class="app-header">
+      <div class="brand">
+        <span class="brand-mark">MyITP<span class="brand-mark-arrow">→</span>LMX</span>
+        <div class="brand-text"><h1>Migration Progress</h1><p class="brand-sub">My IT Process → Lifecycle Manager X</p></div>
+      </div>
+    </header>
+    <main class="app-body">
+      <section class="card">
+        <div class="card-head"><h2>Alignment migration</h2><span id="migrationState" class="mode-tag">Starting</span></div>
+        <p class="hint" id="migrationSummary">Review the migration before starting.</p>
+        <div id="migrationPreview" class="migration-preview"></div>
+        <button id="startMigrationBtn" class="btn-primary">Start migration</button>
+        <button id="retryMigrationBtn" class="btn-secondary hidden">Retry items needing attention</button>
+        <pre id="migrationLog" class="log"></pre>
+        <section id="migrationSummarySection" class="migration-summary hidden">
+          <div class="summary-heading">Migration summary</div>
+          <div id="migrationSummaryList" class="summary-list"></div>
+        </section>
+      </section>
+    </main>
+  </div>
+  <script src="migration.js"></script>
+</body>
+</html>

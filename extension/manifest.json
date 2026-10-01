@@ -1,0 +1,32 @@
+{
+  "manifest_version": 3,
+  "name": "My IT Process to LMX",
+  "version": "1.0.71",
+  "description": "A migration utility for Chromium-based browsers that migrates assessment templates and their responses from My IT Process into Lifecycle Manager X.",
+  "action": {
+    "default_popup": "src/popup.html",
+    "default_title": "My IT Process to LMX"
+  },
+  "background": {
+    "service_worker": "src/background.js"
+  },
+  "permissions": ["storage", "activeTab", "scripting", "tabs"],
+  "host_permissions": [
+    "https://new.live.myitprocess.com/*",
+    "https://api.scalepad.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://new.live.myitprocess.com/alignment*"
+      ],
+      "js": ["src/mapping.js", "src/content-script.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}

@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>My IT Process to LMX</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="app-header">
+      <div class="brand">
+        <span class="brand-mark">MyITP<span class="brand-mark-arrow">→</span>LMX</span>
+        <div class="brand-text">
+          <h1>Migration Assistant</h1>
+          <p class="brand-sub">My IT Process → Lifecycle Manager X</p>
+        </div>
+        <button id="settingsToggleBtn" class="settings-toggle" type="button" title="Settings" aria-label="Open settings">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Zm9 3.5a7.9 7.9 0 0 0-.1-1.2l2-1.55-2-3.46-2.38.96a8.2 8.2 0 0 0-2.08-1.2L16.1 3h-4l-.35 2.55a8.2 8.2 0 0 0-2.08 1.2L7.3 5.8l-2 3.46 2 1.55A7.9 7.9 0 0 0 7.2 12c0 .4.04.8.1 1.2l-2 1.55 2 3.46 2.38-.96c.64.5 1.34.9 2.08 1.2L12.1 21h4l.35-2.55a8.2 8.2 0 0 0 2.08-1.2l2.38.96 2-3.46-2-1.55c.06-.4.1-.8.1-1.2Z"/></svg>
+        </button>
+      </div>
+      <div class="readiness-strip" aria-label="Migration readiness">
+        <div class="readiness-item" id="myitpReadiness"><span class="status-dot"></span><span class="readiness-name">My IT Process</span><span class="readiness-state">Checking…</span></div>
+        <div class="readiness-item" id="lmxReadiness"><span class="status-dot"></span><span class="readiness-name">LMX</span><span class="readiness-state">Checking…</span></div>
+      </div>
+      <details id="settingsPanel" class="settings-popover">
+        <summary>
+          <span class="settings-title">Settings</span>
+          <span class="settings-status" id="settingsStatus">Not connected</span>
+        </summary>
+        <div class="settings-body">
+          <div class="field-group">
+            <label class="field-label" for="apiKeyInput">LMX API key</label>
+            <div class="row">
+              <input type="password" id="apiKeyInput" class="input" placeholder="x-api-key value" />
+              <button id="saveKeyBtn" class="btn-secondary">Save</button>
+            </div>
+            <p class="hint" id="keyStatus">No key saved yet.</p>
+          </div>
+          <div class="field-group">
+            <label class="field-label" for="evaluatorSelect">Evaluating user</label>
+            <select id="evaluatorSelect" class="input"></select>
+            <p class="hint">Used as the evaluator on the LMX assessment.</p>
+          </div>
+          <div class="field-group">
+            <label class="field-label">Assessment template</label>
+          <p class="hint" id="templateStatus">A matching custom template with My IT Process labels is preferred; otherwise a compatible template is reused or created.</p>
+          </div>
+          <div class="extension-version" id="extensionVersion">Version 1.0.71</div>
+          <div class="extension-author">Author: Tulsie Narine | Sr. Solutions Engineer | ScalePad</div>
+        </div>
+      </details>
+    </header>
+
+    <main class="app-body">
+      <section class="card">
+        <div class="card-head">
+          <h2>Alignment reviews</h2>
+          <span class="mode-tag" id="pageTypeTag">My IT Process</span>
+        </div>
+        <p class="hint review-count" id="pageStatus">Open My IT Process Alignment, then reopen this popup.</p>
+        <div class="review-toolbar"><select id="reviewFilter" class="input review-filter" aria-label="Filter alignment reviews"><option value="all">All reviews</option><option value="ready">Ready to migrate</option><option value="unmatched">Needs client match</option><option value="failed">Needs retry</option><option value="migrated">Migrated</option></select></div>
+        <div class="completion-filter">
+          <div class="completion-filter-head"><label for="completionFilter">Minimum Engineer completion</label><output id="completionFilterValue">0%</output></div>
+          <input id="completionFilter" type="range" min="0" max="100" step="1" value="0" aria-label="Minimum Engineer completion percentage" />
+          <div class="completion-filter-scale"><span>0%</span><span>100%</span></div>
+        </div>
+        <div class="review-columns-header"><span></span><span>My IT Process client</span><span>LMX client</span></div>
+        <div id="reviewList" class="review-list"></div>
+        <div id="reviewPager" class="review-pager hidden">
+          <button id="previousPageBtn" class="btn-secondary">Previous</button>
+          <span id="pageIndicator" class="page-indicator"></span>
+          <button id="nextPageBtn" class="btn-secondary">Next</button>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="card-head"><h2>Migration</h2></div>
+        <p class="hint" id="selectionStatus">No reviews selected.</p>
+        <button id="migrateBtn" class="btn-primary" disabled>Migrate selected reviews</button>
+        <pre id="logOutput" class="log hidden"></pre>
+      </section>
+
+    </main>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>

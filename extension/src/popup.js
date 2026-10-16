@@ -69,6 +69,8 @@ function reviewStatus(review) {
 }
 
 function completionPercent(review) {
+  // Submitted Engineer reviews show "(Submitted MM/DD/YYYY)" with no percentage; treat them as 100%.
+  if (review.engineerState === 'complete' || /submitted/i.test(review.engineerStatus || '')) return 100;
   const match = String(review.engineerStatus || '').match(/(\d+(?:\.\d+)?)\s*%/);
   return match ? Number(match[1]) : 0;
 }

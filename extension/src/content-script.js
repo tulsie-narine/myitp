@@ -74,7 +74,7 @@ function completionState(text) {
 
 function reviewerName(statusText) {
   return cleanText(statusText)
-    .replace(/\s*\((?:due|submitted)[^)]+\)\s*\d+%?\s*$/i, '')
+    .replace(/\s*\((?:due|submitted)[^)]+\)(?:\s*\d+%?)?\s*$/i, '')
     .trim();
 }
 
